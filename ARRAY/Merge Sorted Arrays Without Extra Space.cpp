@@ -45,10 +45,9 @@ void mergeTwoSortedArraysWithoutExtraSpace(vector<long long> &a, vector<long lon
                 left++;
                 right++;
                 }
-
                 if (gap == 1)
                 break;
-                gap = (len / 2) * (len % 2);
+                gap = (gap / 2) * (gap % 2);
         }
 }
 

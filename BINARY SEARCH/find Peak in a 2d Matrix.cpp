@@ -9,7 +9,7 @@ int maxelement(vector<vector<int>> &g,int n,int m,int col){
         if(g[i][col]>maxel){
             maxel=g[i][col];
             index=i;
-        }
+        } 
     }
 
     return index;

@@ -29,7 +29,7 @@ public:
 };
 */
 
-Node* removeKthNode(Node* head, int K)
+Node* removeKthNodeoptimal(Node* head, int K)
 {
     // Write your code here.
     Node* fast=head;

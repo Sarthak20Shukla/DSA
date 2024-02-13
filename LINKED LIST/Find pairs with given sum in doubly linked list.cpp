@@ -49,7 +49,7 @@ vector<pair<int, int>> findPairs(Node* head, int k)
         if(left->data + right->data ==k){
             ans.push_back({left->data,right->data});
             left=left->next;
-            right=right->next;
+            right=right->prev;
         } 
         else if(left->data + right->data < k){
             left=left->next;

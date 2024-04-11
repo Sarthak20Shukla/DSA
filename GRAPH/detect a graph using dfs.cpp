@@ -1,0 +1,36 @@
+//detect a graph using dfs
+#include<bits/stdc++.h>
+
+using namespace std;
+
+class Graph {
+
+public:
+bool dfs(int node,int parent,int vis[],vector<int> adj[]){
+    vis[node]=1;
+    for(auto it:adj[node]){
+        if(!vis[it]){
+            if(dfs(it,node,vis,adj)) return true;
+        }
+        else if(it!=parent) return true;
+    }
+    return false;
+}
+    bool detectCycle(int V, vector<int> adj[]) {
+        // Write your code here.
+        int vis[V]={0};
+        for(int i=0;i<V;i++){
+            if(!vis[i]){
+                if(dfs(i,-1,vis,adj)) return true;
+            }
+        }
+        return false;
+    }
+};
+
+int main(){
+
+    
+
+    return 0;
+}

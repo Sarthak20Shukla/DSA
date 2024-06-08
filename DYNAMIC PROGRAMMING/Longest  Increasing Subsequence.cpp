@@ -37,3 +37,14 @@ public:
         return f(0,-1,nums,dp);
     }
 };
+//tabulation
+int lengthOfLIS(vector<int>& nums) {
+        int n=nums.size();
+        vector<vector<int>> dp(n,vector<int>(n+1,0));
+            int len=0+dp[ind+1][prev_ind];
+        if(prev_ind==-1 || nums[ind]>nums[prev_ind]){
+            len=max(len,1+dp[ind+1][ind]);
+        }
+         dp[ind][prev_ind+1]=len;
+        return dp[0][0];
+    }

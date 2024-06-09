@@ -13,6 +13,7 @@ public:
                 f++;
             }
         }
+        
         if(f==s1.size() && s==s2.size()) return true;
         return false;
 }   

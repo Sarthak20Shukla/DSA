@@ -5,6 +5,7 @@ int longestBitonicSubsequence(vector<int>& nums, int n)
         // code here
         vector<int> dp1(n,1);
         vector<int> dp2(n,1);
+        
 
         int maxi = 0;
         for(int i=0;i<n;i++){

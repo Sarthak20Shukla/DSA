@@ -1,4 +1,5 @@
 //print lis
+
  vector<int> dp(n,1) , hash(n);
         int maxi = 1 , last = 0;
         for(int i=0;i<n;i++){

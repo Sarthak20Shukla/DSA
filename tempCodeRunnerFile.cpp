@@ -1,50 +1,34 @@
 #include<bits/stdc++.h>
-
 using namespace std;
 
-bool funBrahma(int value , vector < int > &value_array , int k)
-{
-    for(int i = 0; i < value_array.size(); i++)
-    {
-        int difference = value - value_array[i];
-        int Uttar = difference/ k;
-        if(Uttar % 2 == 1) return false;
-        if(value >= value_array[i] + Uttar * k && value <= value_array[i] + (Uttar + 1) * k)
-        {
-            continue;
-        }
-        else return 0;
-    }
-    return true;
+void solve(int leftbound,int rightbound,int LEFTBOUND,int RIGHTBOUND,vector<int> &dppp) {
+	
+	int x = min(rightbound, RIGHTBOUND) - max(leftbound, LEFTBOUND);
+	if(leftbound < LEFTBOUND) dppp[LEFTBOUND - 1] = 1;
+	if(LEFTBOUND < leftbound) dppp[leftbound - 1] = 1;
+	if(RIGHTBOUND > rightbound) dppp[rightbound] = 1;
+	if(rightbound > RIGHTBOUND) dppp[RIGHTBOUND] = 1;
+
+	int uttar = 0;
+	for(int i = 1; i <= 101; i++) {
+		uttar += dppp[i];
+	}
+
+	if(x < 0) uttar = 0;
+	cout << max(1, uttar + x) << endl;
 }
 
-int main()
-{
-   
-    int teStShiv; cin >> teStShiv;
-    while(teStShiv--)
-    {
-        int numbbb , k;
-        cin >> numbbb >> k;
-        vector < int > origiNAl_Array(numbbb);
-        for(int i = 0; i < numbbb; i++)  cin >> origiNAl_Array[i];
-        
-        sort(origiNAl_Array.begin() , origiNAl_Array.end());
-         bool flaGGGG = 0;
-        for(int i = origiNAl_Array[numbbb - 1]; i <= origiNAl_Array[numbbb - 1] + k; i++)
-        {
-            bool flag = funBrahma(i , origiNAl_Array , k);
-            if(flag)
-            {
-                cout << i << endl;
-                flaGGGG = 1;
-                break;
-            }
-        }
-        if(!flaGGGG)
-        {
-            cout << -1 << endl;
-        }
-    }
-    return 0;
+int main() {
+	
+	int TestSHIV; 
+	cin >> TestSHIV;
+	while(TestSHIV--) {
+int leftbound, rightbound; 
+	int LEFTBOUND, RIGHTBOUND;
+
+cin >> leftbound >> rightbound;
+	 cin >> LEFTBOUND >> RIGHTBOUND;
+	vector<int> dppp(105, 0);
+		solve(leftbound,rightbound,LEFTBOUND,RIGHTBOUND,dppp);
+	}	
 }

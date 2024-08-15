@@ -1,34 +1,38 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void solve(int leftbound,int rightbound,int LEFTBOUND,int RIGHTBOUND,vector<int> &dppp) {
-	
-	int x = min(rightbound, RIGHTBOUND) - max(leftbound, LEFTBOUND);
-	if(leftbound < LEFTBOUND) dppp[LEFTBOUND - 1] = 1;
-	if(LEFTBOUND < leftbound) dppp[leftbound - 1] = 1;
-	if(RIGHTBOUND > rightbound) dppp[rightbound] = 1;
-	if(rightbound > RIGHTBOUND) dppp[RIGHTBOUND] = 1;
+const int NUMBER = 2e5 + 10;
+int ScoreSJFJ[NUMBER];
 
-	int uttar = 0;
-	for(int i = 1; i <= 101; i++) {
-		uttar += dppp[i];
+void solve(int number,int kK) {
+	
+	long long uttar = 0;
+	sort(ScoreSJFJ+1, ScoreSJFJ+ number+1, greater<int>());
+	for(int i=1;i<=number;i++) {
+		if(i&1) {
+			uttar+=ScoreSJFJ[i]; 
+		} else {
+			int d=min(kK,ScoreSJFJ[i-1] - ScoreSJFJ[i]);
+			ScoreSJFJ[i]+=d;
+			kK-=d;
+			uttar-=ScoreSJFJ[i];
+		}
 	}
 
-	if(x < 0) uttar = 0;
-	cout << max(1, uttar + x) << endl;
+	cout <<uttar<< endl;
 }
 
 int main() {
 	
-	int TestSHIV; 
-	cin >> TestSHIV;
-	while(TestSHIV--) {
-int leftbound, rightbound; 
-	int LEFTBOUND, RIGHTBOUND;
-
-cin >> leftbound >> rightbound;
-	 cin >> LEFTBOUND >> RIGHTBOUND;
-	vector<int> dppp(105, 0);
-		solve(leftbound,rightbound,LEFTBOUND,RIGHTBOUND,dppp);
+	int TesTRREVRahma; 
+	cin >> TesTRREVRahma;
+	while(TesTRREVRahma--) {
+		int number, kK; 
+		cin >> number >> kK;
+	for(int i = 1; i <= number; i++) 
+		cin >> ScoreSJFJ[i];
+		solve(number,kK);
 	}	
+	return 0;
 }
+

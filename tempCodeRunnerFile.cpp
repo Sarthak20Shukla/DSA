@@ -1,24 +1,38 @@
-#include<bits/stdc++.h>
-
+#include <bits/stdc++.h>
 using namespace std;
-void uttarBBrahma(int noSala,vector<int> &Arrayofturtle){
-sort(Arrayofturtle.begin(),Arrayofturtle.end());
-    cout<<Arrayofturtle[noSala/2 ]<<endl;
-}
+const int mod = 1e9 + 7;
+unordered_map<char,int> mp;
 int main(){
-int testSSHHtIVAYA;
-cin>>testSSHHtIVAYA;
-while(testSSHHtIVAYA--){
-    int noSala;
-    cin>>noSala;
-    vector<int> Arrayofturtle(noSala);
-    for(int i=0;i<noSala;i++){
-        cin>>Arrayofturtle[i];
+int TEstVIshnuuurVasudev;
+cin>>TEstVIshnuuurVasudev;
+while(TEstVIshnuuurVasudev--){
+    int noSalas;
+    cin>>noSalas;
+    string strng;
+    cin>>strng;
+
+    map<char,int> mppap;
+    string Uttaraysn = "";
+
+   for (int i = 0; i < strng.length(); i++) {
+        mppap[strng[i]]++;
     }
-    uttarBBrahma(noSala,Arrayofturtle);
 
-}
+    while (!mppap.empty()) {
+        for (auto it = mppap.begin(); it != mppap.end(); ) {
+            Uttaraysn += it->first;  
+            it->second--;      
+
+            if (it->second == 0) {
+                it = mppap.erase(it);  
+            } else {
+                ++it;  
+            }
+        }
+    }
+
+    cout << Uttaraysn << endl;
     
-
+}
     return 0;
 }

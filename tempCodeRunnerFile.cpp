@@ -1,38 +1,28 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
+
 using namespace std;
-const int mod = 1e9 + 7;
-unordered_map<char,int> mp;
+
 int main(){
-int TEstVIshnuuurVasudev;
-cin>>TEstVIshnuuurVasudev;
-while(TEstVIshnuuurVasudev--){
-    int noSalas;
-    cin>>noSalas;
-    string strng;
-    cin>>strng;
+    int n;
+    cin>>n;
 
-    map<char,int> mppap;
-    string Uttaraysn = "";
 
-   for (int i = 0; i < strng.length(); i++) {
-        mppap[strng[i]]++;
+    vector<int>arr(n);
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
     }
 
-    while (!mppap.empty()) {
-        for (auto it = mppap.begin(); it != mppap.end(); ) {
-            Uttaraysn += it->first;  
-            it->second--;      
+    sort(arr.begin(),arr.end(),greater<int>());
 
-            if (it->second == 0) {
-                it = mppap.erase(it);  
-            } else {
-                ++it;  
-            }
+    for(int i=1;i<n;i++){
+        if(arr[i] != arr[0]) {cout<<arr[i]<<endl;
+            break;
+        }
+        else {cout<<"No sec largest"<<endl;
+            break;
         }
     }
 
-    cout << Uttaraysn << endl;
-    
-}
+
     return 0;
 }

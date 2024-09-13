@@ -43,4 +43,27 @@ bool solve(int i,int j,string s, string p){
 };
 
 //memoisation
-
+class Solution {
+public:
+bool solve(vector<vector<int>>&dp,int i,int j,string s, string p){
+     int n=s.length();
+     int m=p.length();
+     if(dp[i][j]!=-1) return dp[i][j];
+    if(p.length()==j) return (s.length()==i);
+    bool fcm=false;
+    if((s.length()>i) && (s[i]==p[j]|| p[j]=='.')) fcm=true;
+    if(p[j+1]=='*') {
+        bool not_take=solve(dp,i,j+2,s,p);
+        bool take=fcm && solve(dp,i+1,j,s,p);
+        return  dp[i][j]= not_take|| take;
+    } 
+            return  dp[i][j]= fcm && solve(dp,i+1,j+1,s,p);
+    
+}
+    bool isMatch(string s, string p) {
+        int n=s.length();
+        int m=p.length();
+        vector<vector<int>>dp(n+1,vector<int>(m+1,-1));
+        return solve(dp,0,0,s,p);
+    }
+};

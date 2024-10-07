@@ -3,26 +3,18 @@
 using namespace std;
 
 int main(){
-    int n;
-    cin>>n;
 
-
-    vector<int>arr(n);
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
+    string s;
+    getline(cin,s);
+    int num;
+    vector<int> v;
+    stringstream ss(s);
+    while(ss>>num){
+        v.push_back(num); 
     }
-
-    sort(arr.begin(),arr.end(),greater<int>());
-
-    for(int i=1;i<n;i++){
-        if(arr[i] != arr[0]) {cout<<arr[i]<<endl;
-            break;
-        }
-        else {cout<<"No sec largest"<<endl;
-            break;
-        }
+    for(auto it: v){
+        cout<<it<<" ";
     }
-
 
     return 0;
 }

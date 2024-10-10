@@ -1,49 +1,40 @@
+// 
+
 #include<bits/stdc++.h>
 
 using namespace std;
-int factorial(int n){
-    int sum=1;
-    for(int i=n;i>=1;i--){
-        
-            sum*=i;
-        
-    }
-    return sum;
+string getnumbers(string &userInput){
+unordered_map<string,string> mp={{"one","1"},{"two","2"},{"three","3"},{"four","4"},{"five","5"},{"six","6"},{"seven","7"},{"eight","8"},{"nine","9"},{"zero","0"},{"double","2"},{"triple","3"}};
+string res="";
+int i=0;
+stringstream ss(userInput);
+string word="";
+vector<string> arr;
+while(ss>>word){
+    arr.push_back(word);
+}
+while(i<arr.size()){
+    string val=mp[arr[i]];
+    if(arr[i]=="double"){
+        val=mp[arr[i+1]]+mp[arr[i+1]];
+        i+=2;
+    } else if(arr[i]=="triple"){
+        val=mp[arr[i+1]]+mp[arr[i+1]]+mp[arr[i+1]];
+        i+=2;
+    } else i+=1;
+    res+=val;
+}
+
+return res;
 }
 
 int main(){
-    int sum=0;
-    vector<int> v1;
-    vector<int> q;
-    string s;
-    
-    getline(cin,s);
-    
-    int token;
-    istringstream ss(s);
-    while(ss>>token){
-        
-        v1.push_back(token);
 
-    }
 
-    for(int i=0;i<v1.size();i++){
-        int temp=v1[i];
-        sum=0;
-        while(temp){
-            int num=temp%10;
-            sum+=factorial(num);
-            temp/=10;
-        }
-        if(v1[i]==sum) {
-            q.push_back(v1[i]);
-        }
-    }
-  for(int i=0;i<q.size()-1;i++){
-    cout<<q[i]<<", ";
-  }
-  cout<<q[q.size()-1];
-    cout<<endl;
+    string userInput;
+    getline(cin,userInput);
+    string result=getnumbers(userInput);
+    cout<<result<<endl;
 
     return 0;
 }
